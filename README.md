@@ -160,7 +160,7 @@ linkedin Link : [Hamza Bouslama UM6P](https://www.linkedin.com/in/hamza-bouslama
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 
-[linkedin-url]: https://linkedin.com/in/hamza-bouslama
+[linkedin-url]: https://www.linkedin.com/in/hamza-bouslama-523969176/
 
 [Java-com]: https://img.shields.io/badgeJava-0769ADstyle=for-the-badge&logo=Java&logoColor=white
 
