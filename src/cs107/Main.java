@@ -1,43 +1,11 @@
 package cs107;
-
 import java.util.Arrays;
 
-/**
- * Main entry point of the program.
- * @apiNote Students are free to change it.
- * This class will not be graded unless asked by the students
- * and only if the changes are considered as a bonus
- * @author Hamza REMMAL (hamza.remmal@epfl.ch)
- * @version 1.3
- * @since 1.0
- */
 public final class Main {
 
-    /**
-     * DO NOT CHANGE THIS, MORE ON THAT IN WEEK 7
-     */
     private Main(){}
 
-    /**
-     * Main entry point to the program
-     * @param args (String[]) - Arguments passed to the program via the command line
-     */
     public static void main(String[] args){
-        /*
-        We've listed all the test methods here.
-        Once you've implemented a new functionality, you can uncomment
-        the corresponding test and run it.
-        All the test starts with the 'assert' keyword. This means that if
-        a test passes, your program will continue the execution of the code.
-        Otherwise, if the test fails, your program will stop and a message will
-        appear in your terminal :
-        """
-        Exception in thread "main" java.lang.AssertionError
-        """
-        You can check which test fails and why by inspecting the StackTrace.
-        You can always change the code of this method to change the behavior of
-        your program
-         */
 
         // ========== Test ArrayUtils ==========
         assert testWrap();
@@ -60,14 +28,6 @@ public final class Main {
         assert testQoiOpRun();
         assert testEncodeData();
 
-
-
-        //String imagetest = "random";
-        //Helper.write(imagetest+".qoi",QOIEncoder.qoiFile(Helper.readImage("references/"+imagetest+".png")));
-        //Diff.diff("references/"+imagetest+".qoi", "res/"+imagetest+".qoi");
-
-
-
         // ========== Test QOIDecoder ==========
         assert testDecodeHeader();
         assert testDecodeQoiOpRGB();
@@ -87,14 +47,6 @@ public final class Main {
     }
 
     @SuppressWarnings("unused")
-    /*private static boolean testEquals() {
-            byte[] a1 = {1,5,3};
-            byte[] a2 = {1,4,3};
-            boolean result = ArrayUtils.equals(a1,a2);
-        System.out.println(result);
-                return true;
-    }
-    @SuppressWarnings("unused")*/
     private static boolean testEquals() {
         byte[][] a1  = new byte[1][4];
         byte[][] a2  = new byte[1][6];
@@ -108,11 +60,6 @@ public final class Main {
 
     // ============================================================================================
 
-    /**
-     * Encodes a given file from "PNG" to "QOI"
-     * @param inputFile (String) - The path of the file to encode
-     * @param outputFile (String) - The path where to store the generated "Quite Ok Image"
-     */
     public static void pngToQoi(String inputFile, String outputFile){
         // Read a PNG file
         var inputImage = Helper.readImage(inputFile);
@@ -121,12 +68,6 @@ public final class Main {
         // Write in binary mode the file content to 'output_file'
         Helper.write(outputFile, outputFileContent);
     }
-
-    /**
-     * Encodes a given file from "QOI" to "PNG"
-     * @param inputFile (String) - The path of the file to decode
-     * @param outputFile (String) - The path where to store the generated "PNG" Image
-     */
     public static void qoiToPng(String inputFile, String outputFile){
         // Read in binary mode the file 'input_file'
         var inputFileContent = Helper.read(inputFile);
@@ -136,12 +77,6 @@ public final class Main {
         Helper.writeImage(outputFile, computedImage);
     }
 
-    /**
-     * Computes the ratio
-     * @param png (int) - Size of the "PNG" file
-     * @param qoi (int) - Size of the "QOI" file
-     * @return (int) - The ratio
-     */
     public static double ratio(int png, int qoi){
         return 100d * png / qoi;
     }
@@ -214,7 +149,6 @@ public final class Main {
             {11, 12, 13, 14, 15}
     };
 
-    // Example of the expected format in ArrayUtils::image_to_channels & ArrayUtils::channels_to_image
     private static final byte[][] formattedInput = {
             {0, 0,  1, 0}, {0, 0,  2, 0}, {0, 0,  3, 0}, {0, 0,  4, 0},{0, 0,  5, 0},
             {0, 0,  6, 0}, {0, 0,  7, 0}, {0, 0,  8, 0}, {0, 0,  9, 0},{0, 0, 10, 0},
@@ -358,7 +292,7 @@ public final class Main {
 
     @SuppressWarnings("unused")
     private static boolean testDecodeQoiOpRun(){
-        byte[][] buffer = new byte[6][4]; // Array is full of zeros
+        byte[][] buffer = new byte[6][4]; 
         byte[] pixel    = {1, 2, 3, 4};
         byte chunk       = -61;
         int position    = 1;

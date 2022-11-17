@@ -1,45 +1,21 @@
 package cs107;
 
-/**
- * Utility class used to simulate the Unix command "hexdump"
- * @author Hamza REMMAL (hamza.remmal@epfl.ch)
- * @version 1.3
- * @since 1.0
- */
+
 public final class Hexdump {
 
     // ============================================================================================
     // ================================== HEXDUMP API =============================================
     // ============================================================================================
 
-    /**
-     * Print the content of the array in a hexadecimal form
-     * in the Terminal
-     * @param binary (byte[]) - Array to print
-     */
+
     public static void hexdump(byte[] binary){
         hexdump(binary, 0);
     }
 
-    /**
-     * Print the content of the array in a hexadecimal form starting from
-     * a specific index
-     * @param binary (byte[]) - Array to print
-     * @param start_address (int) - Index from which we start printing
-     */
     public static void hexdump(byte[] binary, int start_address){
         hexdump(binary, start_address, binary.length - 1);
     }
 
-    /**
-     * Print the content of an array starting from a specific index
-     * and finishing in another index
-     * @param binary (byte[]) - Array to print
-     * @param start_address (int) - Index from which we start printing
-     * @param end_address (int) - Index from which we stop printing
-     * @throws AssertionError if the array is null or the addresses are
-     * outside the possible bound
-     */
     public static void hexdump(byte[] binary, int start_address, int end_address){
         assert binary != null : "(hexdump) You've used a null array, cannot dump the null array";
         assert  0 <= start_address && start_address <= end_address;
@@ -63,8 +39,6 @@ public final class Hexdump {
         });
         System.out.println("==========================================================================================");
     }
-
-    // ============================================================================================
 
     // Hide default constructor
     private Hexdump(){}

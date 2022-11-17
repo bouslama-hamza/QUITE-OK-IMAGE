@@ -1,21 +1,10 @@
 package cs107;
 
-/**
- * Signatures of all the methods to be implemented by the students
- * @apiNote DO NOT CHANGE THE CONTENT OF THIS CLASS. IF YOU DO CHANGE IT, YOUR SUBMISSION CAN BE REFUSED BY
- * THE SERVER OR THE AUTOMATIC GRADER WILL NOT BE ABLE TO GRADE YOUR PROJECT.
- * @author Hamza REMMAL (hamza.remmal@epfl.ch)
- * @version 1.3
- * @since 1.0
- */
 @SuppressWarnings("unused")
 
 
 public final class SignatureChecks {
 
-    /**
-     * DO NOT CHANGE THIS, MORE ON THAT IN WEEK 7.
-     */
     private SignatureChecks(){}
 
     private static int[][]  int_2_dim  = new int[0][0];
@@ -35,9 +24,6 @@ public final class SignatureChecks {
     // ============================= ArrayUtils METHODS =================================
     // ==================================================================================
 
-    /**
-     * Signature checks for the first task (ArrayUtils)
-     */
     private static void task_1_signature_checks(){
 
         byte_2_dim = ArrayUtils.imageToChannels(int_2_dim);
@@ -71,9 +57,7 @@ public final class SignatureChecks {
     // ============================= QOIEncoder METHODS =================================
     // ==================================================================================
 
-    /**
-     * Signature checks for the second task ("Quite Ok Image" Encoder)
-     */
+
     private static void task_2_signature_checks(){
 
         byte_1_dim = QOIEncoder.qoiHeader(image_value);
@@ -100,9 +84,6 @@ public final class SignatureChecks {
     // ============================= QOIDecoder METHODS =================================
     // ==================================================================================
 
-    /**
-     * Signature checks for the third task ("Quite Ok Image" Decoder)
-     */
     private static void task_3_signature_checks(){
 
         int_1_dim = QOIDecoder.decodeHeader(byte_1_dim);

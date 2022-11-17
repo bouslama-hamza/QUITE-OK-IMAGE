@@ -1,23 +1,10 @@
 package cs107;
 
-import java.util.ArrayList;
-
 import static cs107.Helper.Image;
 import static cs107.Helper.generateImage;
 
-/**
- * "Quite Ok Image" Decoder
- *
- * @author Hamza REMMAL (hamza.remmal@epfl.ch)
- * @version 1.3
- * @apiNote Third task of the 2022 Mini Project
- * @since 1.0
- */
 public final class QOIDecoder {
 
-    /**
-     * DO NOT CHANGE THIS, MORE ON THAT IN WEEK 7.
-     */
     private QOIDecoder() {
     }
 
@@ -25,13 +12,6 @@ public final class QOIDecoder {
     // =========================== QUITE OK IMAGE HEADER ================================
     // ==================================================================================
 
-    /**
-     * Extract useful information from the "Quite Ok Image" header
-     *
-     * @param header (byte[]) - A "Quite Ok Image" header
-     * @return (int[]) - Array such as its content is {width, height, channels, color space}
-     * @throws AssertionError See handouts section 6.1
-     */
     public static int[] decodeHeader(byte[] header) {
         assert header != null;
         assert header.length == QOISpecification.HEADER_SIZE;
@@ -53,17 +33,6 @@ public final class QOIDecoder {
     // =========================== ATOMIC DECODING METHODS ==============================
     // ==================================================================================
 
-    /**
-     * Store the pixel in the buffer and return the number of consumed bytes
-     *
-     * @param buffer   (byte[][]) - Buffer where to store the pixel
-     * @param input    (byte[]) - Stream of bytes to read from
-     * @param alpha    (byte) - Alpha component of the pixel
-     * @param position (int) - Index in the buffer
-     * @param idx      (int) - Index in the input
-     * @return (int) - The number of consumed bytes
-     * @throws AssertionError See handouts section 6.2.1
-     */
     public static int decodeQoiOpRGB(byte[][] buffer, byte[] input, byte alpha, int position, int idx){
         assert buffer!=null;
         assert input!=null;
@@ -75,16 +44,6 @@ public final class QOIDecoder {
         return 3;
     }
 
-    /**
-     * Store the pixel in the buffer and return the number of consumed bytes
-     *
-     * @param buffer   (byte[][]) - Buffer where to store the pixel
-     * @param input    (byte[]) - Stream of bytes to read from
-     * @param position (int) - Index in the buffer
-     * @param idx      (int) - Index in the input
-     * @return (int) - The number of consumed bytes
-     * @throws AssertionError See handouts section 6.2.2
-     */
     public static int decodeQoiOpRGBA(byte[][] buffer, byte[] input, int position, int idx) {
         assert buffer != null && input != null;
         assert position >= 0 && position < buffer.length;
@@ -95,14 +54,6 @@ public final class QOIDecoder {
         return 4;
     }
 
-    /**
-     * Create a new pixel following the "QOI_OP_DIFF" schema.
-     *
-     * @param previousPixel (byte[]) - The previous pixel
-     * @param chunk         (byte) - A "QOI_OP_DIFF" data chunk
-     * @return (byte[]) - The newly created pixel
-     * @throws AssertionError See handouts section 6.2.4
-     */
     public static byte[] decodeQoiOpDiff(byte[] previousPixel, byte chunk) {
         assert previousPixel != null;
         assert previousPixel.length == 4;
@@ -127,14 +78,6 @@ public final class QOIDecoder {
 
     }
 
-    /**
-     * Create a new pixel following the "QOI_OP_LUMA" schema
-     *
-     * @param previousPixel (byte[]) - The previous pixel
-     * @param data          (byte[]) - A "QOI_OP_LUMA" data chunk
-     * @return (byte[]) - The newly created pixel
-     * @throws AssertionError See handouts section 6.2.5
-     */
     public static byte[] decodeQoiOpLuma(byte[] previousPixel, byte[] data) {
         assert previousPixel != null && data != null && previousPixel.length == 4;
         assert (data[0] & QOISpecification.QOI_OP_LUMA_TAG) == QOISpecification.QOI_OP_LUMA_TAG;
@@ -148,16 +91,6 @@ public final class QOIDecoder {
         return result;
     }
 
-    /**
-     * Store the given pixel in the buffer multiple times
-     *
-     * @param buffer   (byte[][]) - Buffer where to store the pixel
-     * @param pixel    (byte[]) - The pixel to store
-     * @param chunk    (byte) - a QOI_OP_RUN data chunk
-     * @param position (int) - Index in buffer to start writing from
-     * @return (int) - number of written pixels in buffer
-     * @throws AssertionError See handouts section 6.2.6
-     */
     public static int decodeQoiOpRun(byte[][] buffer, byte[] pixel, byte chunk, int position){
 
         assert buffer!=null;
@@ -179,15 +112,6 @@ public final class QOIDecoder {
     // ========================= GLOBAL DECODING METHODS ================================
     // ==================================================================================
 
-    /**
-     * Decode the given data using the "Quite Ok Image" Protocol
-     *
-     * @param data   (byte[]) - Data to decode
-     * @param width  (int) - The width of the expected output
-     * @param height (int) - The height of the expected output
-     * @return (byte[][]) - Decoded "Quite Ok Image"
-     * @throws AssertionError See handouts section 6.3
-     */
     public static byte[][] decodeData(byte[] data, int width, int height){
 
         assert data!=null;
@@ -245,14 +169,6 @@ public final class QOIDecoder {
         return decoding;
     }
 
-
-    /**
-     * Decode a file using the "Quite Ok Image" Protocol
-     *
-     * @param content (byte[]) - Content of the file to decode
-     * @return (Image) - Decoded image
-     * @throws AssertionError if content is null
-     */
     public static Image decodeQoiFile(byte[] content) {
         assert content != null;
         assert ArrayUtils.equals(ArrayUtils.extract(content, content.length - 8, 8), QOISpecification.QOI_EOF);

@@ -2,25 +2,12 @@ package cs107;
 
 import java.util.Arrays;
 
-/**
- * Utility class used to simulate the Unix command "diff"
- * @author Hamza REMMAL (hamza.remmal@epfl.ch)
- * @version 1.3
- * @since 1.0
- */
 public final class Diff {
 
     // ============================================================================================
     // ======================================= DIFF API ===========================================
     // ============================================================================================
 
-    /**
-     * Compare two byte arrays and print in the Terminal
-     * the difference between them.
-     * @param b1 (byte[]) - First Array
-     * @param b2 (byte[]) - Second Array
-     * @throws AssertionError If one of the arrays is null
-     */
     public static void diff(byte[] b1, byte[] b2){
         assert b1 != null;
         assert b2 != null;
@@ -35,13 +22,6 @@ public final class Diff {
         showEnd();
     }
 
-    /**
-     * Compare the content of 2 files and print in the Terminal the difference
-     * between them
-     * @param file_1 (String) - Path of the first file
-     * @param file_2 (String) - Path of the second file
-     * @throws AssertionError if one of the paths is null
-     */
     public static void diff(String file_1, String file_2){
         assert file_1 != null;
         assert file_2 != null;
